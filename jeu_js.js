@@ -1,4 +1,4 @@
-let money = 100;
+let money = 0;
 let augmentation_seconde = 0;
 let augmentation_clique = 1;
 let augmentation_clique_vrai = 0;
@@ -80,7 +80,7 @@ function loadState() {
     
 
     // Display loaded states
-    document.getElementById('currency').textContent = 'Money: ' + money;
+    document.getElementById('currency').textContent = 'Money: ' + money.toFixed(2);
     document.getElementById('timeDisplay').textContent = 'Time: ' + time;
 
     // Load removed images state
@@ -106,7 +106,7 @@ icon_clicker.addEventListener('click', () => {
     console.log(augmentation_clique_vrai);
     money+= augmentation_clique_vrai; // Increment the money variable
     localStorage.setItem('money', money); // Store the updated money value in localStorage
-    document.getElementById('currency').textContent = 'Money: ' + money;
+    document.getElementById('currency').textContent = 'Money: ' + money.toFixed(2);
   
 
 });
@@ -337,31 +337,35 @@ setInterval(() => {
 
 setInterval(() => {
     money += augmentation_seconde;
-    document.getElementById('currency').textContent = 'Money: ' + money;
+    document.getElementById('currency').textContent = 'Money: ' + money.toFixed(2);
     localStorage.setItem('money', money); // Save to local storage
 }, time_money);
 
 document.getElementById('Reset_button').addEventListener('click', function () {
-    localStorage.clear();
-    removedImagesAll.forEach(item => {
-        item.variable = [];
-    });
-    items.forEach(composant => {
-        while (composant.modal_chercher.firstChild) {
-            composant.modal_chercher.removeChild(composant.modal_chercher.firstChild);
-        }
-        while (composant.modal_ameliorer.firstChild) {
-            composant.modal_ameliorer.removeChild(composant.modal_ameliorer.firstChild);
-        }
-    });
-    augmentation_seconde = 0;
-    augmentation_clique = 1;
-    time_money = 1000;
-    money = 0;
-    time = 0;
-    document.getElementById('currency').textContent = 'Money: ' + money;
-    document.getElementById('timeDisplay').textContent = 'Time: ' + time;
-    localStorage.setItem('imagesLoaded', 'false');
-    initializeImages(); // Reload the images after reset
-    location.reload();
+    const userConfirmed = confirm('Es-tu sûr de vouloir recommencer ? Cette action est irréversible.');
+
+    if (userConfirmed) {
+        localStorage.clear();
+        removedImagesAll.forEach(item => {
+            item.variable = [];
+        });
+        items.forEach(composant => {
+            while (composant.modal_chercher.firstChild) {
+                composant.modal_chercher.removeChild(composant.modal_chercher.firstChild);
+            }
+            while (composant.modal_ameliorer.firstChild) {
+                composant.modal_ameliorer.removeChild(composant.modal_ameliorer.firstChild);
+            }
+        });
+        augmentation_seconde = 0;
+        augmentation_clique = 1;
+        time_money = 1000;
+        money = 0;
+        time = 0;
+        document.getElementById('currency').textContent = 'Money: ' + money;
+        document.getElementById('timeDisplay').textContent = 'Time: ' + time;
+        localStorage.setItem('imagesLoaded', 'false');
+        initializeImages(); // Reload the images after reset
+        location.reload();
+    }
 });
