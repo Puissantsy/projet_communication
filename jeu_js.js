@@ -1,7 +1,8 @@
 let money = 100;
 let augmentation_seconde = 0;
 let augmentation_clique = 1;
-let augmentation_percent_
+let augmentation_clique_vrai = 0;
+let augmentation_percent_seconde = 0;
 let time = 0;
 let time_money = 1000;
 const alimentation_item = [
@@ -66,9 +67,17 @@ function loadState() {
     if (localStorage.getItem('augmentation_clique')) {
         augmentation_clique = parseInt(localStorage.getItem('augmentation_clique'));
     }
+    if (localStorage.getItem('augmentation_percent_seconde')) {
+        augmentation_percent_seconde = parseInt(localStorage.getItem('augmentation_percent_seconde'));
+    }
     if (localStorage.getItem('time_money')) {
         time_money = parseInt(localStorage.getItem('time_money'));
     }
+    if (localStorage.getItem('augmentation_clique_vrai')) {
+        augmentation_clique_vrai = parseInt(localStorage.getItem('augmentation_clique_vrai'));
+    }
+
+    
 
     // Display loaded states
     document.getElementById('currency').textContent = 'Money: ' + money;
@@ -91,11 +100,14 @@ function loadState() {
 
 
 icon_clicker.addEventListener('click', () => {
-    money+= augmentation_clique; // Increment the money variable
+    
+    augmentation_clique_vrai = augmentation_percent_seconde*augmentation_seconde+augmentation_clique;
+    localStorage.setItem('augmentation_clique_vrai', augmentation_clique_vrai);
+    console.log(augmentation_clique_vrai);
+    money+= augmentation_clique_vrai; // Increment the money variable
     localStorage.setItem('money', money); // Store the updated money value in localStorage
     document.getElementById('currency').textContent = 'Money: ' + money;
-    console.log(parseInt(augmentation_seconde*(5/100)));
-    console.log(parseInt(augmentation_seconde));
+  
 
 });
 
@@ -248,22 +260,24 @@ function renderRemovedImages(item, index1, index) {
                 }
                  
                 augmentation_clique += items[index1].item[index].nombre;
-                console.log(augmentation_seconde*(5/100));
                 localStorage.setItem('augmentation_clique', augmentation_clique);
                
             } else if ( items[index1].item[index].variable == 2){
+                if (localStorage.getItem('augmentation_percent_seconde')) {
+                    augmentation_percent_seconde = parseInt(localStorage.getItem('augmentation_percent_seconde'));
+                }
                 if (localStorage.getItem('augmentation_clique')) {
                     augmentation_clique = parseInt(localStorage.getItem('augmentation_clique'));
                 }
                 if (localStorage.getItem('augmentation_seconde')) {
                     augmentation_seconde = parseInt(localStorage.getItem('augmentation_seconde'));
                 }
-                augmentation_clique += augmentation_seconde*items[index1].item[index].nombre;
-                console.log(augmentation_seconde*(5/100),items[index1].item[index] );
-                localStorage.setItem('augmentation_clique', augmentation_clique);
+                augmentation_percent_seconde += items[index1].item[index].nombre;
+                localStorage.setItem('augmentation_percent_seconde', augmentation_percent_seconde);
 
             }
-    
+
+            
             removedImagesAll[index1].variable.splice(indexToRemove, 1);
             const cleanedArray = removedImagesAll[index1].variable.filter(item => item !== undefined);
             localStorage.setItem(removedImagesAll[index1].key, JSON.stringify(cleanedArray));
