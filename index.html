@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to My Website</h1>
+        <nav>
+            <ul>
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./jeu_html.html">Jeu</a></li>
+                <li><a href="#timeline">Timeline</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="home">
+            <h2>Home</h2>
+            <p>This is the home section.</p>
+
+            <div class="slider-container">
+                <div class="slides">
+                    <img src="./icon/alimentation.png" alt="Image 1">
+                    <img src="./icon/clavier.png" alt="Image 2">
+                    <img src="./icon/souris.png" alt="Image 3">
+                    <img src="./icon/transistor.png" alt="Image 4">
+                </div>
+                <a class="prev" onclick="moveSlides(-1)">&#10094;</a>
+                <a class="next" onclick="moveSlides(1)">&#10095;</a>
+            </div>
+
+
+
+        </section>
+        <section id="about">
+            <h2>About</h2>
+            <p>This is the about section.</p>
+        </section>
+        <section id="timeline">
+            <h2>Timeline</h2>
+            <div class="timeline">
+                
+              
+              
+
+                <div class="imageContainer" id="imageContainer">
+                    <!-- Images will be added dynamically here -->
+                </div>
+           
+              
+                <img src="./image/Timeline.png" alt="Timeline Image" class="timeline-image">
+                
+                <div id="modal" class="modal">
+                    <div class="modal-content">
+                      <span class="close">&times;</span>
+                      <h2 id="modal-name"></h2>
+                      <img id="modal-image" src="" alt="">
+                      <p id="modal-info"></p>
+                      
+                    </div>
+                  </div>
+            </div>
+
+        </section>
+
+        <section id="contact">
+            <h2>Contact</h2>
+            <p>This is the contact section.</p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 My Website</p>
+    </footer>
+    <script src="script.js"></script>
+    <script src="slider.js"></script>
+</body>
+</html>

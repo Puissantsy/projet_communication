@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to My Website</h1>
+        <nav>
+            <ul>
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./jeu_html.html">Jeu</a></li>
+                <li><a href="#timeline">Timeline</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div id="premiere_line">
+            <p id="currency"> Money: 0</p>
+            <button id="Reset_button">Reset</button>
+        </div>
+        <div id="timeDisplay">Time: 0</div>
+        <div id="image_div">
+        <img id="triggerImage" src="Ordinateur_principal.png" alt="Trigger Image">
+        </div>
+
+        <div id="amelioration">
+            
+            <img id="Ameliorer_objet" class="upgrade" src="./image/fond_jeu.png">
+            <img id="Chercher_objet" class="upgrade" src="./image/fond_jeu_cherche.png">
+        </div>
+
+        <div id="modal1" class="modal">
+            <div class="modal-content">
+              <span class="close" data-modal="modal1">&times;</span>
+              <h2>Alimentaaedtion</h2>
+
+              <div id="modal_upgrade_alimentation"></div>
+              <h2>Carte graphique</h2>
+
+              <div id="modal_upgrade_carte_graphique"></div>
+              <h2>Carte mère</h2>
+              <div id="modal_upgrade_carte_mère"></div>
+            </div>
+          </div>
+        
+          <div id="modal2" class="modal">
+            <div class="modal-content">
+              <span class="close" data-modal="modal2">&times;</span>
+              <h2>Alimentation</h2>
+              <div id="modal_found_alimentation"></div>
+              <h2>Carte graphique</h2>
+              <div id="modal_found_carte_graphique"></div>
+              <h2>Carte mère</h2>
+              <div id="modal_found_carte_mère"></div>
+            </div>
+          </div>
+
+
+          <div id="Explication" class="modal">
+            <div class="modal-content">
+              <span class="close" data-modal="modal2">&times;</span>
+              <h2>Information :</h2>
+              <div id="modal-information"></div>
+            </div>
+          </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 My Website</p>
+    </footer>
+    <!-- <script src="./particles.js-master/particles.min.js"></script> -->
+    <script src="jeu_js.js"></script>
+    <script src="jeu_js_2.js"></script>
+</body>
+</html>
