@@ -33,12 +33,15 @@ let removedImagesAlimentation = JSON.parse(localStorage.getItem('removedImagesAl
 let removedImagesCarte_graphique = JSON.parse(localStorage.getItem('removedImagesCarte_graphique')) || [];
 let removedImagesCarte_mère = JSON.parse(localStorage.getItem('removedImagesCarte_mère')) || [];
 
-const icon_clicker = document.getElementById('triggerImage');
+let removedImagesAlimentationNope = new Array(alimentation_item.length).fill(0);
+let removedImagesCarte_graphiqueNope = new Array(carte_graphique_item.length).fill(0);
+let removedImagesCarte_mèreNope = new Array(carte_mère_item.length).fill(0);
 
-const removedImagesAll = [
-    { variable: removedImagesAlimentation, name: 'Alimentation', key: 'removedImagesAlimentation' },
-    { variable: removedImagesCarte_graphique, name: 'Carte_graphique', key: 'removedImagesCarte_graphique' },
-    { variable: removedImagesCarte_mère, name: 'Carte_mère', key: 'removedImagesCarte_mère' },
+const icon_clicker = document.getElementById('triggerImage');
+let removedImagesAll = [
+    { variable: removedImagesAlimentation, name: 'Alimentation', key: 'removedImagesAlimentation', check:removedImagesAlimentationNope, key2: 'removedImagesAlimentationNope' },
+    { variable: removedImagesCarte_graphique, name: 'Carte_graphique', key: 'removedImagesCarte_graphique', check: removedImagesCarte_graphiqueNope, key2: 'removedImagesCarte_graphiqueNope' },
+    { variable: removedImagesCarte_mère, name: 'Carte_mère', key: 'removedImagesCarte_mère' , check:removedImagesCarte_mèreNope, key2: 'removedImagesCarte_mèreNope'},
 ];
 
 const images = [];
@@ -49,6 +52,7 @@ window.onload = function () {
 };
 
 function loadState() {
+    // Load other states
     if (localStorage.getItem('money')) {
         money = parseInt(localStorage.getItem('money'));
     }
@@ -58,31 +62,39 @@ function loadState() {
     if (localStorage.getItem('augmentation_seconde')) {
         augmentation_seconde = parseInt(localStorage.getItem('augmentation_seconde'));
     }
-
     if (localStorage.getItem('augmentation_clique')) {
         augmentation_clique = parseInt(localStorage.getItem('augmentation_clique'));
     }
-
     if (localStorage.getItem('time_money')) {
         time_money = parseInt(localStorage.getItem('time_money'));
     }
 
+    // Display loaded states
     document.getElementById('currency').textContent = 'Money: ' + money;
     document.getElementById('timeDisplay').textContent = 'Time: ' + time;
 
-    if (!localStorage.getItem('imagesLoaded')) {
-        initializeImages();
-        localStorage.setItem('imagesLoaded', 'true');
-    } else {
-        initializeImages();
-        restoreImagesState();
-    }
+    // Load removed images state
+    removedImagesAll.forEach((group) => {
+        if (localStorage.getItem(group.key)) {
+            group.variable = JSON.parse(localStorage.getItem(group.key));
+        }
+        if (localStorage.getItem(group.key2)) {
+            group.check = JSON.parse(localStorage.getItem(group.key2));
+        }
+    });
+
+    // Initialize and restore images
+    initializeImages();
+    restoreImagesState();
 }
+
 
 icon_clicker.addEventListener('click', () => {
     money+= augmentation_clique; // Increment the money variable
     localStorage.setItem('money', money); // Store the updated money value in localStorage
     document.getElementById('currency').textContent = 'Money: ' + money;
+    console.log(parseInt(augmentation_seconde*(5/100)));
+    console.log(parseInt(augmentation_seconde));
 
 });
 
@@ -90,6 +102,8 @@ function initializeImages() {
     images.length = 0; // Clear the images array
     items.forEach((composant, index1) => {
         composant.item.forEach((item, index) => {
+            if (removedImagesAll[index1].check[index] == 0){
+                
             const container = document.createElement('div');
             container.classList.add('image-container');
 
@@ -101,7 +115,7 @@ function initializeImages() {
             info_bouton.textContent = "Info";
             const img = document.createElement('img');
             img.classList.add('image_upgrade');
-            img.src = './icon/Nope.png';
+            img.src = item.src;
             const prix = document.createElement('p');
             prix.classList.add('upgrade-button');
             prix.textContent = item.PrixTextTime;
@@ -123,30 +137,34 @@ function initializeImages() {
             img.addEventListener('click', () => {
                 const previousIndexRemoved = removedImagesAll[index1].variable.includes(index - 1);
                 const currentIndexRemoved = removedImagesAll[index1].variable.includes(index);
-
-                console.log('Previous index removed:', previousIndexRemoved);
-                console.log('Current index removed:', !currentIndexRemoved);
-                console.log('Item price time:', item.PrixTextTime);
-                console.log('Current time:', time);
-                console.log('Condition:', (previousIndexRemoved || index == 0) && !currentIndexRemoved && item.PrixTextTime <= time);
-
-                if ((previousIndexRemoved || index == 0) && !currentIndexRemoved && item.PrixTextTime <= time) {
+            
+            
+                // Check if the image can be purchased
+                if (item.PrixTextTime <= time) {
                     container.style.display = 'none';
                     removedImagesAll[index1].variable.push(index);
                     localStorage.setItem(removedImagesAll[index1].key, JSON.stringify(removedImagesAll[index1].variable));
+            
+                    // Verify state persistence
+                    const persistedState = JSON.parse(localStorage.getItem(removedImagesAll[index1].key));
+                    
                     renderRemovedImages(item, index1, index);
                 } else {
-                    alert("You don't have enough time or prerequisites! "+ item.PrixTextTime+" "+ time);
+                    alert("You don't have enough time or prerequisites!");
                 }
             });
+            
 
             // Add click event listener for the info button
             info_bouton.addEventListener('click', () => {
                 alert(item.info);
             });
+        }
         });
     });
 }
+
+
 
 
 function restoreImagesState() {
@@ -171,33 +189,7 @@ function someFunctionThatChangesState() {
 }
 
 
-function updateImages() {
-    let nombre = 0;
-    items.forEach((composant, index1) => {
-        composant.item.forEach((item, index) => {
-            const prixValue = parseFloat(item.PrixTextTime);
-            const image = images[nombre];
-            const container = document.querySelectorAll('.image-container')[nombre];
-            if (image) {
-                if ((prixValue * 0.8) <= time) {
-                    if ((removedImagesAll[index1].variable[index - 1] == index - 1 || index == 0) && (removedImagesAll[index1].variable[index] != index)) {
-                        image.src = item.src;
-                        image.alt = item.alt;
-                    }
-                } else {
-                    image.src = './icon/Nope.png';
-                    image.alt = "Pas assez d'argent";
-                }
-                if (prixValue > time) {
-                    image.style.filter = 'grayscale(100%)';
-                } else {
-                    image.style.filter = 'grayscale(0%)';
-                }
-                nombre++;
-            }
-        });
-    });
-}
+
 
 function renderRemovedImages(item, index1, index) {
     const container = document.createElement('div');
@@ -234,34 +226,51 @@ function renderRemovedImages(item, index1, index) {
 
     // Add click event listener for the image
     // Ensure item.PrixTextTime and item.PrixTextMoney are numbers
-img.addEventListener('click', () => {
-    const indexToRemove = removedImagesAll[index1].variable.indexOf(index);
-    if (item.PrixTextMoney <= money && indexToRemove > -1) {
-        container.style.display = 'none';
+    img.addEventListener('click', () => {
+        const indexToRemove = removedImagesAll[index1].variable.indexOf(index);
+        if (item.PrixTextMoney <= money && indexToRemove > -1) {
+            container.style.display = 'none';
+            
 
-        if (items[index1].item[index].variable == 0) {
-            augmentation_seconde += items[index1].item[index].nombre;
-            localStorage.setItem('augmentation_seconde', augmentation_seconde);
-        } else if (items[index1].item[index].variable == 1) {
-            augmentation_clique += items[index1].item[index].nombre;
-            localStorage.setItem('augmentation_clique', augmentation_clique);
-        } else if (items[index1].item[index].variable == 2) {
-            augmentation_clique += items[index1].item[index].nombre;
-            localStorage.setItem('augmentation_clique', augmentation_clique);
+            
+
+
+            if (items[index1].item[index].variable == 0) {
+                if (localStorage.getItem('augmentation_seconde')) {
+                    augmentation_seconde = parseInt(localStorage.getItem('augmentation_seconde'));
+                }
+                augmentation_seconde += items[index1].item[index].nombre;
+                localStorage.setItem('augmentation_seconde', augmentation_seconde);
+            } else if (items[index1].item[index].variable == 1 || items[index1].item[index].variable == 2) {
+                if (localStorage.getItem('augmentation_clique')) {
+                    augmentation_clique = parseInt(localStorage.getItem('augmentation_clique'));
+                }
+                if (localStorage.getItem('augmentation_clique')) {
+                    augmentation_clique = parseInt(localStorage.getItem('augmentation_clique'));
+                    
+                }   
+                augmentation_clique += items[index1].item[index].nombre;
+                
+                localStorage.setItem('augmentation_clique', augmentation_clique);
+               
+            }
+    
+            removedImagesAll[index1].variable.splice(indexToRemove, 1);
+            const cleanedArray = removedImagesAll[index1].variable.filter(item => item !== undefined);
+            localStorage.setItem(removedImagesAll[index1].key, JSON.stringify(cleanedArray));
+            money -= item.PrixTextMoney;
+            localStorage.setItem('money', money);
+            document.getElementById('currency').textContent = 'Money: ' + money;
+            removedImagesAll[index1].check[index] = 1;
+            localStorage.setItem(removedImagesAll[index1].key2, JSON.stringify(removedImagesAll[index1].check));
+            
+            // restoreImagesState();
+
+        } else {
+            alert("You don't have enough money! " + item.PrixTextMoney + " " + money);
         }
-
-        removedImagesAll[index1].variable.splice(indexToRemove, 1);
-        const cleanedArray = removedImagesAll[index1].variable.filter(item => item !== undefined);
-        localStorage.setItem(removedImagesAll[index1].key, JSON.stringify(cleanedArray));
-        money -= item.PrixTextMoney;
-        localStorage.setItem('money', money);
-        document.getElementById('currency').textContent = 'Money: ' + money;
-
-        restoreImagesState();
-    } else {
-        alert("You don't have enough money! "+item.PrixTextMoney+ " "+ money );
-    }
-});
+    });
+    
 
 }
 
@@ -301,7 +310,6 @@ setInterval(() => {
     time += 10000;
     document.getElementById('timeDisplay').textContent = 'Time: ' + time;
     localStorage.setItem('time', time); // Save to local storage
-    updateImages();
 }, 1000);
 
 setInterval(() => {
@@ -323,10 +331,14 @@ document.getElementById('Reset_button').addEventListener('click', function () {
             composant.modal_ameliorer.removeChild(composant.modal_ameliorer.firstChild);
         }
     });
+    augmentation_seconde = 0;
+    augmentation_clique = 1;
+    time_money = 1000;
     money = 0;
     time = 0;
     document.getElementById('currency').textContent = 'Money: ' + money;
     document.getElementById('timeDisplay').textContent = 'Time: ' + time;
     localStorage.setItem('imagesLoaded', 'false');
     initializeImages(); // Reload the images after reset
+    location.reload();
 });
