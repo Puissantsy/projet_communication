@@ -1,7 +1,8 @@
 let money = 100;
 let augmentation_seconde = 0;
 let augmentation_clique = 1;
-let time = 100;
+let augmentation_percent_
+let time = 0;
 let time_money = 1000;
 const alimentation_item = [
     { src: './icon/alimentation.png', alt: 'Alimentation 1', PrixTextTime: 100, PrixTextMoney: 20, info: "Te permet de débloquer l'alimentation de niveau 1", info_ameliorer: "money par seconde augmenté de 1", nombre: 1, variable:0 },
@@ -20,7 +21,7 @@ const carte_graphique_item = [
 ];
 
 const carte_mère_item = [
-    { src: './icon/carte_mère.png', alt: 'Carte_mère 1', PrixTextTime: 150, PrixTextMoney: 20, info: "Te permet de débloquer la carte mère de niveau 1", info_ameliorer: " 5% de money par seconde convertit en money par clique" , nombre: augmentation_seconde*(5/100), variable:2},
+    { src: './icon/carte_mère.png', alt: 'Carte_mère 1', PrixTextTime: 150, PrixTextMoney: 20, info: "Te permet de débloquer la carte mère de niveau 1", info_ameliorer: " 5% de money par seconde convertit en money par clique" , nombre: 5/100, variable:2},
 ];
 
 const items = [
@@ -241,18 +242,26 @@ function renderRemovedImages(item, index1, index) {
                 }
                 augmentation_seconde += items[index1].item[index].nombre;
                 localStorage.setItem('augmentation_seconde', augmentation_seconde);
-            } else if (items[index1].item[index].variable == 1 || items[index1].item[index].variable == 2) {
+            } else if (items[index1].item[index].variable == 1 ) {
                 if (localStorage.getItem('augmentation_clique')) {
                     augmentation_clique = parseInt(localStorage.getItem('augmentation_clique'));
                 }
-                if (localStorage.getItem('augmentation_clique')) {
-                    augmentation_clique = parseInt(localStorage.getItem('augmentation_clique'));
-                    
-                }   
+                 
                 augmentation_clique += items[index1].item[index].nombre;
-                
+                console.log(augmentation_seconde*(5/100));
                 localStorage.setItem('augmentation_clique', augmentation_clique);
                
+            } else if ( items[index1].item[index].variable == 2){
+                if (localStorage.getItem('augmentation_clique')) {
+                    augmentation_clique = parseInt(localStorage.getItem('augmentation_clique'));
+                }
+                if (localStorage.getItem('augmentation_seconde')) {
+                    augmentation_seconde = parseInt(localStorage.getItem('augmentation_seconde'));
+                }
+                augmentation_clique += augmentation_seconde*items[index1].item[index].nombre;
+                console.log(augmentation_seconde*(5/100),items[index1].item[index] );
+                localStorage.setItem('augmentation_clique', augmentation_clique);
+
             }
     
             removedImagesAll[index1].variable.splice(indexToRemove, 1);
