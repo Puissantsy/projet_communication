@@ -6,23 +6,23 @@ let augmentation_percent_seconde = 0;
 let time = 0;
 let time_money = 1000;
 const alimentation_item = [
-    { src: './icon/alimentation.png', alt: 'Alimentation 1', PrixTextTime: 100, PrixTextMoney: 20, info: "Te permet de débloquer l'alimentation de niveau 1", info_ameliorer: "money par seconde augmenté de 1", nombre: 1, variable:0 },
-    { src: './icon/alimentation2.png', alt: 'Alimentation 2', PrixTextTime: 1000, PrixTextMoney: 20, info: "Te permet de débloquer l'alimentation de niveau 2", info_ameliorer: "money par seconde augmenté de 10", nombre: 10, variable:0 },
-    { src: './icon/alimentation3.png', alt: 'Alimentation 3', PrixTextTime: 10000, PrixTextMoney: 20, info: "Te permet de débloquer l'alimentation de niveau 3", info_ameliorer: "money par seconde augmenté de 50", nombre: 50 , variable:0},
-    { src: './icon/alimentation4.png', alt: 'Alimentation 4', PrixTextTime: 100000, PrixTextMoney: 20, info: "Te permet de débloquer l'alimentation de niveau 4", info_ameliorer: "money par seconde augmenté de 100", nombre: 100 , variable:0},
-    { src: './icon/alimentation5.png', alt: 'Alimentation 5', PrixTextTime: 1000000, PrixTextMoney: 20, info: "Te permet de débloquer l'alimentation de niveau 5", info_ameliorer: "money par seconde augmenté de 500", nombre: 500 , variable:0},
+    { src: './icon/alimentation.png', alt: 'Alimentation 1', PrixTextTime: 100, PrixTextMoney: 20, info: "Te permet de débloquer l'alimentation de niveau 1", info_ameliorer: "money par seconde augmenté de 1", nombre: 1, variable:0, name :"Alimentation" },
+    { src: './icon/alimentation2.png', alt: 'Alimentation 2', PrixTextTime: 1000, PrixTextMoney: 20, info: "Te permet de débloquer l'alimentation de niveau 2", info_ameliorer: "money par seconde augmenté de 10", nombre: 10, variable:0, name :"Alimentation" },
+    { src: './icon/alimentation3.png', alt: 'Alimentation 3', PrixTextTime: 10000, PrixTextMoney: 20, info: "Te permet de débloquer l'alimentation de niveau 3", info_ameliorer: "money par seconde augmenté de 50", nombre: 50 , variable:0, name :"Alimentation"},
+    { src: './icon/alimentation4.png', alt: 'Alimentation 4', PrixTextTime: 100000, PrixTextMoney: 20, info: "Te permet de débloquer l'alimentation de niveau 4", info_ameliorer: "money par seconde augmenté de 100", nombre: 100 , variable:0, name :"Alimentation"},
+    { src: './icon/alimentation5.png', alt: 'Alimentation 5', PrixTextTime: 1000000, PrixTextMoney: 20, info: "Te permet de débloquer l'alimentation de niveau 5", info_ameliorer: "money par seconde augmenté de 500", nombre: 500 , variable:0, name :"Alimentation"},
 ];
 
 const carte_graphique_item = [
-    { src: './icon/carte_graphique.png', alt: 'Carte_graphique 1', PrixTextTime: 150, PrixTextMoney: 20, info: "Te permet de débloquer la carte graphique de niveau 1", info_ameliorer: "money par clique augmenté de 1", nombre: 1, variable:1 },
-    { src: './icon/carte_graphique2.png', alt: 'Carte_graphique 2', PrixTextTime: 1500, PrixTextMoney: 20, info: "Te permet de débloquer la carte graphique de niveau 2", info_ameliorer: "money par clique augmenté de 2" , nombre: 2, variable:1},
-    { src: './icon/carte_graphique3.png', alt: 'Carte_graphique 3', PrixTextTime: 15000, PrixTextMoney: 20, info: "Te permet de débloquer la carte graphique de niveau 3", info_ameliorer: "money par clique augmenté de 5", nombre: 5, variable:1 },
-    { src: './icon/carte_graphique4.png', alt: 'Carte_graphique 4', PrixTextTime: 150000, PrixTextMoney: 20, info: "Te permet de débloquer la carte graphique de niveau 4", info_ameliorer: "money par clique augmenté de 10", nombre: 10 , variable:1},
-    { src: './icon/carte_graphique5.png', alt: 'Carte_graphique 5', PrixTextTime: 1500000, PrixTextMoney: 20, info: "Te permet de débloquer la carte graphique de niveau 5", info_ameliorer: "money par clique augmenté de 50" , nombre: 50, variable:1},
+    { src: './icon/carte_graphique.png', alt: 'Carte_graphique 1', PrixTextTime: 150, PrixTextMoney: 20, info: "Te permet de débloquer la carte graphique de niveau 1", info_ameliorer: "money par clique augmenté de 1", nombre: 1, variable:1 , name :"Carte Graphique"},
+    { src: './icon/carte_graphique2.png', alt: 'Carte_graphique 2', PrixTextTime: 1500, PrixTextMoney: 20, info: "Te permet de débloquer la carte graphique de niveau 2", info_ameliorer: "money par clique augmenté de 2" , nombre: 2, variable:1, name :"Carte Graphique"},
+    { src: './icon/carte_graphique3.png', alt: 'Carte_graphique 3', PrixTextTime: 15000, PrixTextMoney: 20, info: "Te permet de débloquer la carte graphique de niveau 3", info_ameliorer: "money par clique augmenté de 5", nombre: 5, variable:1 , name :"Carte Graphique"},
+    { src: './icon/carte_graphique4.png', alt: 'Carte_graphique 4', PrixTextTime: 150000, PrixTextMoney: 20, info: "Te permet de débloquer la carte graphique de niveau 4", info_ameliorer: "money par clique augmenté de 10", nombre: 10 , variable:1, name :"Carte Graphique"},
+    { src: './icon/carte_graphique5.png', alt: 'Carte_graphique 5', PrixTextTime: 1500000, PrixTextMoney: 20, info: "Te permet de débloquer la carte graphique de niveau 5", info_ameliorer: "money par clique augmenté de 50" , nombre: 50, variable:1, name :"Carte Graphique"},
 ];
 
 const carte_mère_item = [
-    { src: './icon/carte_mère.png', alt: 'Carte_mère 1', PrixTextTime: 150, PrixTextMoney: 20, info: "Te permet de débloquer la carte mère de niveau 1", info_ameliorer: " 5% de money par seconde convertit en money par clique" , nombre: 5/100, variable:2},
+    { src: './icon/carte_mère.png', alt: 'Carte_mère 1', PrixTextTime: 150, PrixTextMoney: 20, info: "Te permet de débloquer la carte mère de niveau 1", info_ameliorer: " 5% de money par seconde convertit en money par clique" , nombre: 5/100, variable:2, name :"Carte mère"},
 ];
 
 const items = [
@@ -239,7 +239,38 @@ function renderRemovedImages(item, index1, index) {
 
     // Add click event listener for the info button
     info_bouton.addEventListener('click', () => {
-        alert(item.info_ameliorer);
+        const component = data_components.find(component => component.title === item.name);
+        console.log(component);
+        if (component) {
+            // document.getElementById('info-title').innerText = component.title;
+            // document.getElementById('info-content').innerHTML = component.info;
+            // document.getElementById('info-image').src = component.image;
+
+            const modal = document.getElementById('modal');
+            const modalName = document.getElementById('modal-name');
+            const modalInfo = document.getElementById('modal-info');
+            const modalImage = document.getElementById('modal-image2');
+            const closeModal = document.querySelector('.close');
+            const name = component.title;
+            const info = component.info;
+            const image = component.image;
+            modalName.innerHTML = name;
+            modalInfo.innerHTML = info;
+            modalImage.src = image;
+            modalImage.alt = name;
+            modal.style.display = 'block';
+            
+            closeModal.addEventListener('click', function () {
+                modal.style.display = 'none';
+              });
+          
+            window.addEventListener('click', function (event) {
+              if (event.target == modal) {
+                modal.style.display = 'none';
+              }
+            });
+            
+        }
     });
 
     // Add click event listener for the image
@@ -300,6 +331,10 @@ function renderRemovedImages(item, index1, index) {
     });
     
 
+}
+
+function displayComponentInfo(element) {
+    
 }
 
 

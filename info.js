@@ -109,7 +109,7 @@ const data_components = [
       `
     },
     {
-      title: 'Carte Mère',
+      title: 'Carte mère',
       image: './image/carte_mère_image.png',
       info: `
         <h3>Histoire des Cartes Mères</h3>
