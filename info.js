@@ -30,7 +30,7 @@ const data_components = [
     },
     {
       title: 'ENIAC',
-      image: './image/eniac_image.png',
+      image: './image/ENIAC_image.png',
       info: `
         <h3>ENIAC</h3>
         <p>L'ENIAC (Electronic Numerical Integrator and Computer) a été l'un des premiers ordinateurs électroniques de grande échelle. Il a été conçu par John Presper Eckert et John Mauchly à l'Université de Pennsylvanie et achevé en 1945.</p>

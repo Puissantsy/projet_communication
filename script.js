@@ -10,7 +10,7 @@ const annotationImages = {
   'Carte Graphique': './image/annotation_carte_graphique.png',
   'Carte mère': './image/annotation_carte_mère.png',
   'Carte Réseau': './image/annotation_carte_réseau.png',
-  'ENIAC': './image/annotation_eniac.png',
+  'ENIAC': './image/annotation_ENIAC.png',
   'Vacuum Tube': './image/annotation_vacuum_tube.png',
   'UNIVAC I': './image/annotation_univac.png',
   'Apple I': './image/annotation_apple_i.png',
