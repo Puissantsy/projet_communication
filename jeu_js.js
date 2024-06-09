@@ -6,52 +6,44 @@ let augmentation_percent_seconde = 0;
 let time = 0;
 let time_money = 1000;
 const alimentation_item = [
-    { src: './icon/alimentation.png', alt: 'Alimentation 1', PrixTextTime: 100, PrixTextMoney: 20, info: "Te permet de débloquer l'alimentation de niveau 1", info_ameliorer: "money par seconde augmenté de 1", nombre: 1, variable:0 , name: "Carte Mère"},
-    { src: './icon/alimentation2.png', alt: 'Alimentation 2', PrixTextTime: 1000, PrixTextMoney: 20, info: "Te permet de débloquer l'alimentation de niveau 2", info_ameliorer: "money par seconde augmenté de 10", nombre: 10, variable:0 , name: "Carte Mère"},
-    { src: './icon/alimentation3.png', alt: 'Alimentation 3', PrixTextTime: 10000, PrixTextMoney: 20, info: "Te permet de débloquer l'alimentation de niveau 3", info_ameliorer: "money par seconde augmenté de 50", nombre: 50 , variable:0, name: "Carte Mère"},
-    { src: './icon/alimentation4.png', alt: 'Alimentation 4', PrixTextTime: 100000, PrixTextMoney: 20, info: "Te permet de débloquer l'alimentation de niveau 4", info_ameliorer: "money par seconde augmenté de 100", nombre: 100 , variable:0, name: "Carte Mère"},
-    { src: './icon/alimentation5.png', alt: 'Alimentation 5', PrixTextTime: 1000000, PrixTextMoney: 20, info: "Te permet de débloquer l'alimentation de niveau 5", info_ameliorer: "money par seconde augmenté de 500", nombre: 500 , variable:0, name: "Carte Mère"},
+    { src: './icon/alimentation.png', alt: 'Alimentation 1', PrixTextTime: 100, PrixTextMoney: 20, info: "Te permet de débloquer l'alimentation de niveau 1", info_ameliorer: "money par seconde augmenté de 1", nombre: 1, variable:0 },
+    { src: './icon/alimentation2.png', alt: 'Alimentation 2', PrixTextTime: 1000, PrixTextMoney: 20, info: "Te permet de débloquer l'alimentation de niveau 2", info_ameliorer: "money par seconde augmenté de 10", nombre: 10, variable:0 },
+    { src: './icon/alimentation3.png', alt: 'Alimentation 3', PrixTextTime: 10000, PrixTextMoney: 20, info: "Te permet de débloquer l'alimentation de niveau 3", info_ameliorer: "money par seconde augmenté de 50", nombre: 50 , variable:0},
+    { src: './icon/alimentation4.png', alt: 'Alimentation 4', PrixTextTime: 100000, PrixTextMoney: 20, info: "Te permet de débloquer l'alimentation de niveau 4", info_ameliorer: "money par seconde augmenté de 100", nombre: 100 , variable:0},
+    { src: './icon/alimentation5.png', alt: 'Alimentation 5', PrixTextTime: 1000000, PrixTextMoney: 20, info: "Te permet de débloquer l'alimentation de niveau 5", info_ameliorer: "money par seconde augmenté de 500", nombre: 500 , variable:0},
 ];
 
 const carte_graphique_item = [
-    { src: './icon/carte_graphique.png', alt: 'Carte_graphique 1', PrixTextTime: 150, PrixTextMoney: 20, info: "Te permet de débloquer la carte graphique de niveau 1", info_ameliorer: "money par clique augmenté de 1", nombre: 1, variable:1 , name: "Carte Mère"},
-    { src: './icon/carte_graphique2.png', alt: 'Carte_graphique 2', PrixTextTime: 1500, PrixTextMoney: 20, info: "Te permet de débloquer la carte graphique de niveau 2", info_ameliorer: "money par clique augmenté de 2" , nombre: 2, variable:1, name: "Carte Mère"},
-    { src: './icon/carte_graphique3.png', alt: 'Carte_graphique 3', PrixTextTime: 15000, PrixTextMoney: 20, info: "Te permet de débloquer la carte graphique de niveau 3", info_ameliorer: "money par clique augmenté de 5", nombre: 5, variable:1 , name: "Carte Mère"},
-    { src: './icon/carte_graphique4.png', alt: 'Carte_graphique 4', PrixTextTime: 150000, PrixTextMoney: 20, info: "Te permet de débloquer la carte graphique de niveau 4", info_ameliorer: "money par clique augmenté de 10", nombre: 10 , variable:1, name: "Carte Mère"},
-    { src: './icon/carte_graphique5.png', alt: 'Carte_graphique 5', PrixTextTime: 1500000, PrixTextMoney: 20, info: "Te permet de débloquer la carte graphique de niveau 5", info_ameliorer: "money par clique augmenté de 50" , nombre: 50, variable:1, name: "Carte Mère"},
+    { src: './icon/carte_graphique.png', alt: 'Carte_graphique 1', PrixTextTime: 150, PrixTextMoney: 20, info: "Te permet de débloquer la carte graphique de niveau 1", info_ameliorer: "money par clique augmenté de 1", nombre: 1, variable:1 },
+    { src: './icon/carte_graphique2.png', alt: 'Carte_graphique 2', PrixTextTime: 1500, PrixTextMoney: 20, info: "Te permet de débloquer la carte graphique de niveau 2", info_ameliorer: "money par clique augmenté de 2" , nombre: 2, variable:1},
+    { src: './icon/carte_graphique3.png', alt: 'Carte_graphique 3', PrixTextTime: 15000, PrixTextMoney: 20, info: "Te permet de débloquer la carte graphique de niveau 3", info_ameliorer: "money par clique augmenté de 5", nombre: 5, variable:1 },
+    { src: './icon/carte_graphique4.png', alt: 'Carte_graphique 4', PrixTextTime: 150000, PrixTextMoney: 20, info: "Te permet de débloquer la carte graphique de niveau 4", info_ameliorer: "money par clique augmenté de 10", nombre: 10 , variable:1},
+    { src: './icon/carte_graphique5.png', alt: 'Carte_graphique 5', PrixTextTime: 1500000, PrixTextMoney: 20, info: "Te permet de débloquer la carte graphique de niveau 5", info_ameliorer: "money par clique augmenté de 50" , nombre: 50, variable:1},
 ];
 
 const carte_mère_item = [
-    { src: './icon/carte_mère.png', alt: 'Carte_mère 1', PrixTextTime: 150, PrixTextMoney: 20, info: "Te permet de débloquer la carte mère de niveau 1", info_ameliorer: " 5% de money par seconde convertit en money par clique" , nombre: 5/100, variable:2, name: "Carte Mère"},
-];
-
-const carte_réseau_item = [
-    { src: './icon/carte_réseau.png', alt: 'Carte_réseau 1', PrixTextTime: 150, PrixTextMoney: 20, info: "Te permet de débloquer la carte réseau de niveau 1", info_ameliorer: " 10% de money par seconde convertit en money par clique" , nombre: 10/100, variable:3, name: "Carte Mère"},
+    { src: './icon/carte_mère.png', alt: 'Carte_mère 1', PrixTextTime: 150, PrixTextMoney: 20, info: "Te permet de débloquer la carte mère de niveau 1", info_ameliorer: " 5% de money par seconde convertit en money par clique" , nombre: 5/100, variable:2},
 ];
 
 const items = [
     { item: alimentation_item, modal_chercher: document.getElementById('modal_found_alimentation'), modal_ameliorer: document.getElementById('modal_upgrade_alimentation') },
     { item: carte_graphique_item, modal_chercher: document.getElementById('modal_found_carte_graphique'), modal_ameliorer: document.getElementById('modal_upgrade_carte_graphique') },
     { item: carte_mère_item, modal_chercher: document.getElementById('modal_found_carte_mère'), modal_ameliorer: document.getElementById('modal_upgrade_carte_mère') },
-    { item: carte_réseau_item, modal_chercher: document.getElementById('modal_found_carte_réseau'), modal_ameliorer: document.getElementById('modal_upgrade_carte_réseau') },
 ];
 
 let removedImagesAlimentation = JSON.parse(localStorage.getItem('removedImagesAlimentation')) || [];
 let removedImagesCarte_graphique = JSON.parse(localStorage.getItem('removedImagesCarte_graphique')) || [];
 let removedImagesCarte_mère = JSON.parse(localStorage.getItem('removedImagesCarte_mère')) || [];
-let removedImagesCarte_réseau = JSON.parse(localStorage.getItem('removedImagesCarte_réseau')) || [];
 
 let removedImagesAlimentationNope = new Array(alimentation_item.length).fill(0);
 let removedImagesCarte_graphiqueNope = new Array(carte_graphique_item.length).fill(0);
 let removedImagesCarte_mèreNope = new Array(carte_mère_item.length).fill(0);
-let removedImagesCarte_réseauNope = new Array(carte_réseau_item.length).fill(0);
 
 const icon_clicker = document.getElementById('triggerImage');
 let removedImagesAll = [
     { variable: removedImagesAlimentation, name: 'Alimentation', key: 'removedImagesAlimentation', check:removedImagesAlimentationNope, key2: 'removedImagesAlimentationNope' },
     { variable: removedImagesCarte_graphique, name: 'Carte_graphique', key: 'removedImagesCarte_graphique', check: removedImagesCarte_graphiqueNope, key2: 'removedImagesCarte_graphiqueNope' },
     { variable: removedImagesCarte_mère, name: 'Carte_mère', key: 'removedImagesCarte_mère' , check:removedImagesCarte_mèreNope, key2: 'removedImagesCarte_mèreNope'},
-    { variable: removedImagesCarte_réseau, name: 'Carte_réseau', key: 'removedImagesCarte_réseau' , check:removedImagesCarte_réseauNope, key2: 'removedImagesCarte_réseauNope'},
 ];
 
 const images = [];
@@ -150,6 +142,7 @@ function initializeImages() {
             container.appendChild(container2);
             container.appendChild(prix);
             composant.modal_chercher.appendChild(container);
+
             // Add the image to the images array
             images.push(img);
 
@@ -160,7 +153,9 @@ function initializeImages() {
 
             // Add click event listener for the image
             img.addEventListener('click', () => {
-             
+                const previousIndexRemoved = removedImagesAll[index1].variable.includes(index - 1);
+                const currentIndexRemoved = removedImagesAll[index1].variable.includes(index);
+            
             
                 // Check if the image can be purchased
                 if (item.PrixTextTime <= time) {
@@ -212,51 +207,7 @@ function someFunctionThatChangesState() {
 }
 
 
-function displayComponentInfo(element) {
-    
-    const component = data_components.find(component => component.title === element.name);
-  
-    if (component) {
-        document.getElementById('info-title').innerText = component.title;
-        document.getElementById('info-content').innerHTML = component.info;
-        document.getElementById('info-image').src = component.image;
-    }
-  }
-  
-document.addEventListener('DOMContentLoaded', function () {
-  
-  
-  
-    const photos3 = document.querySelectorAll('.overlay-image');
-    const modal3 = document.getElementById('modal');
-    const modalName3 = document.getElementById('modal-name');
-    const modalInfo3 = document.getElementById('modal-info');
-    const modalImage3 = document.getElementById('modal-image2');
-    const closeModal3 = document.querySelector('.close');
-  
-    photos3.forEach(photo => {
-      photo.addEventListener('click', function () {
-        const name3 = photo.getAttribute('data-name');
-        const info3 = photo.getAttribute('data-info');
-        const image3 = photo.getAttribute('data-image');
-  
-        modalName3.innerHTML = name3;
-        modalInfo3.innerHTML = info3;
-        modalImage3.src = image3;
-        modalImage3.alt = name3;
-        modal3.style.display = 'block';
-      });
-    
-  
-    
-  
-    window.addEventListener('click', function (event) {
-      if (event.target == modal) {
-        modal.style.display = 'none';
-      }
-    });
-  });
-});
+
 
 function renderRemovedImages(item, index1, index) {
     const container = document.createElement('div');
@@ -288,7 +239,7 @@ function renderRemovedImages(item, index1, index) {
 
     // Add click event listener for the info button
     info_bouton.addEventListener('click', () => {
-        displayComponentInfo(item);
+        alert(item.info_ameliorer);
     });
 
     // Add click event listener for the image
@@ -316,7 +267,7 @@ function renderRemovedImages(item, index1, index) {
                 augmentation_clique += items[index1].item[index].nombre;
                 localStorage.setItem('augmentation_clique', augmentation_clique);
                
-            } else if ( items[index1].item[index].variable == 2 || items[index1].item[index].variable == 3){
+            } else if ( items[index1].item[index].variable == 2){
                 if (localStorage.getItem('augmentation_percent_seconde')) {
                     augmentation_percent_seconde = parseInt(localStorage.getItem('augmentation_percent_seconde'));
                 }

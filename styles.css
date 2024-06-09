@@ -388,28 +388,6 @@ footer {
 }
 
 
-#modal_upgrade_carte_réseau{
-  /* margin-top: 20px; */
-  
-  display: flex;
-  height:250px;
-
-  border:5px black solid;
-  overflow-x: auto;
-  padding: 10px;
-}
-
-#modal_found_carte_réseau{
-  /* margin-top: 20px; */
-  
-  display: flex;
-  height:250px;
-  border:5px black solid;
-  overflow-x: auto;
-  padding: 10px;
-}
-
-
 
 .image-container {
   display: flex;
