@@ -8,27 +8,26 @@
 </head>
 <body>
     <header>
-        <h1>Welcome to My Website</h1>
+        <img id="pastille" src="./icon/PASTILLE_PROJ_ETUDIANT_TOULOUSE_BLEUCLAIR.png" alt="">
+        <h1>Histoire de l'ordinateur</h1>
         <nav>
             <ul>
                 <li><a href="./index.html">Home</a></li>
                 <li><a href="./jeu_html.html">Jeu</a></li>
-                <li><a href="#timeline">Timeline</a></li>
-                <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
+        <img id="logo" src="./icon/logo_iut.png" alt="">
     </header>
     <main>
         <section id="home">
-            <h2>Home</h2>
-            <p>This is the home section.</p>
+            
 
             <div class="slider-container">
                 <div class="slides">
-                    <img src="./icon/alimentation.png" alt="Image 1">
-                    <img src="./icon/clavier.png" alt="Image 2">
-                    <img src="./icon/souris.png" alt="Image 3">
-                    <img src="./icon/transistor.png" alt="Image 4">
+                    <img src="./image/inventeur_clavier.png" alt="slide clavier">
+                    <img src="./image/inventeur_souris.png" alt="slide souris">
+                    <img src="./image/inventeur_apple.png" alt="slide apple">
+                    <img src="./image/inventeur_ibm.png" alt="slide IBM">
                 </div>
                 <a class="prev" onclick="moveSlides(-1)">&#10094;</a>
                 <a class="next" onclick="moveSlides(1)">&#10095;</a>
@@ -37,9 +36,7 @@
 
 
         </section>
-        <section id="about">
-            <h2>About</h2>
-            <p>This is the about section.</p>
+        
         </section>
         <section id="timeline">
             <h2>Timeline</h2>
@@ -55,23 +52,23 @@
               
                 <img src="./image/Timeline.png" alt="Timeline Image" class="timeline-image">
                 
-                <div id="modal" class="modal">
-                    <div class="modal-content">
-                      <span class="close">&times;</span>
-                      <h2 id="modal-name"></h2>
-                      <img id="modal-image" src="" alt="">
-                      <p id="modal-info"></p>
-                      
-                    </div>
+                <div id="modal" class="modal2">
+                    <div class="modal-content2">
+                      <div class="modal-info">
+                        
+                        <h2 id="modal-name"></h2>
+                        <p id="modal-info"></p>
+                      </div>
+                    <div class="modal-image-container">
+                        <img id="modal-image2" src="" alt="">
+                      </div>
+                    <span class="close">&times;</span>
+                </div>
                   </div>
             </div>
 
         </section>
 
-        <section id="contact">
-            <h2>Contact</h2>
-            <p>This is the contact section.</p>
-        </section>
     </main>
     <footer>
         <p>&copy; 2024 My Website</p>

@@ -21,4 +21,4 @@ function moveSlides(step) {
 // Auto slide functionality (optional)
 setInterval(() => {
     moveSlides(1);
-}, 6000);
+}, 10000);

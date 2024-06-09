@@ -107,7 +107,12 @@ icon_clicker.addEventListener('click', () => {
     money+= augmentation_clique_vrai; // Increment the money variable
     localStorage.setItem('money', money); // Store the updated money value in localStorage
     document.getElementById('currency').textContent = 'Money: ' + money.toFixed(2);
-  
+    icon_clicker.classList.add('animate');
+
+    // Remove the wobble animation class after the animation ends
+    setTimeout(() => {
+        icon_clicker.classList.remove('animate');
+    }, 300); // Match the duration of the animation (0.3s)
 
 });
 
@@ -330,7 +335,7 @@ window.addEventListener('click', function (event) {
 
 // Timer to increase time and update images
 setInterval(() => {
-    time += 10000;
+    time += 10;
     document.getElementById('timeDisplay').textContent = 'Time: ' + time;
     localStorage.setItem('time', time); // Save to local storage
 }, 1000);
